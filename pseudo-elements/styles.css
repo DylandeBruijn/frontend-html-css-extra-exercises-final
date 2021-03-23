@@ -1,5 +1,5 @@
 /*Base styles*/
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400&display=swap");
 
 * {
     margin: 0;
@@ -10,8 +10,9 @@ body {
     background-color: hsl(212, 36%, 90%);
     color: hsl(210, 93%, 29%);
     text-align: center;
-    font-family: 'Roboto Slab', Arial, serif;
+    font-family: "Roboto Slab", Arial, serif;
     font-weight: 300;
+    quotes: "\201c""\201d";
 }
 
 h1 {
@@ -31,9 +32,52 @@ h1 {
     padding: 32px;
 }
 
+.compliment p::before {
+    content: open-quote;
+}
+
+.compliment p::after {
+    content: close-quote;
+}
+
 .highlight {
+    position: relative;
     color: hsl(210, 93%, 19%);
     font-weight: 400;
+}
+
+.highlight:hover::before {
+    display: block;
+    content: "Dit is een latijns woord";
+
+    background-color: hsl(29, 100%, 47%);
+    color: white;
+    border-radius: 4px;
+    font-weight: 300;
+    padding: 4px;
+    width: 200px;
+    z-index: 1;
+
+    position: absolute;
+    top: -35px;
+    left: calc(50% - 100px);
+}
+
+.highlight:hover::after {
+    content: "";
+    display: block;
+
+    border-top: 10px solid hsl(29, 100%, 47%);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    z-index: 1;
+
+    position: absolute;
+    bottom: 18px;
+    left: calc(50% - 5px);
+}
+
+.hightlight::hover {
 }
 
 footer {
@@ -43,4 +87,8 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+footer p::after {
+    content: " \00a9";
 }
